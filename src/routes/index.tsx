@@ -1,0 +1,312 @@
+import { createFileRoute, Link } from "@tanstack/react-router";
+import {
+  Sparkles, HeartHandshake, Users, Target, Eye, ArrowRight, CheckCircle2,
+} from "lucide-react";
+import { ServicesBuilding } from "@/components/ServicesBuilding";
+import heroBg from "@/assets/hero-cleaning.jpg";
+import socialImg from "@/assets/social-impact.jpg";
+
+export const Route = createFileRoute("/")({
+  component: LandingPage,
+  head: () => ({
+    meta: [
+      { title: "Servicios integrales de aseo — Espacios que inspiran" },
+      { name: "description", content: "Redefinimos la experiencia de uso de espacios físicos con servicios integrales de aseo que inspiran productividad, bienestar y compromiso social." },
+      { property: "og:title", content: "Servicios integrales de aseo — Espacios que inspiran" },
+      { property: "og:description", content: "Redefinimos la experiencia de uso de espacios físicos con servicios integrales de aseo que inspiran productividad, bienestar y compromiso social." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
+});
+
+function LandingPage() {
+  return (
+    <div className="min-h-screen bg-background text-foreground">
+      <Hero />
+      <Services />
+      <About />
+      <SocialImpact />
+      <FinalCTA />
+      <Footer />
+    </div>
+  );
+}
+
+/* ─── Hero ─── */
+function Hero() {
+  return (
+    <section className="relative pb-24 pt-0 lg:pb-32 lg:pt-8" style={{ background: "#0a2428" }}>
+      <img
+        src={heroBg}
+        alt="Profesional de aseo limpiando un espacio corporativo moderno y luminoso"
+        width={1920}
+        height={1088}
+        className="absolute inset-0 w-full h-full object-cover object-right pointer-events-none select-none"
+        aria-hidden="true"
+      />
+      <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to right, rgba(10,36,40,0.92), rgba(10,36,40,0.55), rgba(10,36,40,0.15))" }} />
+      <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to bottom, rgba(10,36,40,0.3), transparent, rgba(10,36,40,0.4))" }} />
+
+      {/* Navbar */}
+      <nav className="relative z-20 max-w-5xl mx-auto px-5 h-16 flex items-center justify-between">
+        <Link to="/" className="flex items-center gap-2.5">
+          <Sparkles className="w-7 h-7 text-white" strokeWidth={2} />
+          <span className="text-xl font-semibold text-white/90 tracking-tight">Tu Empresa</span>
+        </Link>
+
+        <div className="hidden sm:flex items-center gap-8 text-sm text-white">
+          <a href="#servicios" className="hover:text-white/70 transition-colors">Servicios</a>
+          <a href="#nosotros" className="hover:text-white/70 transition-colors">Nosotros</a>
+          <a href="#impacto" className="hover:text-white/70 transition-colors">Impacto social</a>
+        </div>
+
+        <a
+          href="#contacto"
+          className="inline-flex items-center gap-1.5 rounded-xl border border-white/30 bg-white/10 text-white px-5 py-2.5 text-sm font-medium hover:bg-white/20 backdrop-blur-sm transition-all duration-200 active:scale-[0.97]"
+        >
+          Contáctanos
+          <ArrowRight className="w-3.5 h-3.5" />
+        </a>
+      </nav>
+
+      {/* Hero content */}
+      <div className="relative z-10 max-w-5xl mx-auto px-5 pt-24 pb-12">
+        <div className="max-w-xl">
+          <ScrollReveal delay={80}>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white text-left" style={{ lineHeight: "1.08" }}>
+              Facility Management
+            </h1>
+          </ScrollReveal>
+
+          <ScrollReveal delay={160}>
+            <p className="mt-6 text-lg text-white/90 text-left" style={{ textWrap: "pretty", lineHeight: "1.6" }}>
+              Un servicio integral con un propósito excepcional
+            </p>
+          </ScrollReveal>
+
+          <ScrollReveal delay={240}>
+            <div className="mt-10 flex flex-col sm:flex-row items-start gap-3">
+              <a
+                href="#contacto"
+                className="inline-flex items-center gap-2 rounded-xl bg-primary text-primary-foreground px-7 py-3.5 text-sm font-bold hover:bg-primary/90 transition-all duration-200 active:scale-[0.97] shadow-lg shadow-primary/25"
+              >
+                Solicita una cotización
+                <ArrowRight className="w-4 h-4" />
+              </a>
+              <a
+                href="#nosotros"
+                className="inline-flex items-center gap-2 rounded-xl border border-white/30 bg-white/10 text-white px-7 py-3.5 text-sm font-medium hover:bg-white/20 backdrop-blur-sm transition-all duration-200 active:scale-[0.97]"
+              >
+                Conócenos
+              </a>
+            </div>
+          </ScrollReveal>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── Servicios ─── */
+function Services() {
+  return (
+    <section id="servicios" className="py-28 bg-card">
+      <div className="max-w-6xl mx-auto px-5">
+        <ScrollReveal>
+          <div className="text-center mb-16 max-w-2xl mx-auto">
+            <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-3">Servicios</p>
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground" style={{ lineHeight: "1.15" }}>
+              Cuidamos cada espacio de tu edificio
+            </h2>
+            <p className="mt-4 text-muted-foreground" style={{ textWrap: "pretty" }}>
+              De la cubierta al sótano: recorre el edificio y descubre el servicio que prestamos en cada una de sus zonas.
+            </p>
+          </div>
+        </ScrollReveal>
+
+        <ScrollReveal>
+          <ServicesBuilding />
+        </ScrollReveal>
+      </div>
+    </section>
+  );
+}
+
+/* ─── Nosotros: Misión y Visión ─── */
+function About() {
+  return (
+    <section id="nosotros" className="py-28 border-y border-border/40">
+      <div className="max-w-5xl mx-auto px-5">
+        <ScrollReveal>
+          <div className="text-center mb-16">
+            <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-3">Nosotros</p>
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground" style={{ lineHeight: "1.15" }}>
+              Quiénes somos y hacia dónde vamos
+            </h2>
+          </div>
+        </ScrollReveal>
+
+        <div className="grid md:grid-cols-2 gap-6">
+          <ScrollReveal delay={80}>
+            <div className="rounded-2xl bg-card border border-border/60 p-8 h-full shadow-[0_1px_3px_0_rgba(0,0,0,0.04)]">
+              <div className="w-12 h-12 rounded-2xl bg-primary text-primary-foreground flex items-center justify-center mb-5 shadow-lg shadow-primary/15">
+                <Target className="w-6 h-6" />
+              </div>
+              <h3 className="text-xl font-semibold text-foreground mb-3">Misión</h3>
+              <p className="text-muted-foreground leading-relaxed" style={{ textWrap: "pretty" }}>
+                Redefinir la experiencia de uso de espacios físicos al ofrecer servicios integrales de aseo que inspiren a la productividad, el bienestar y al compromiso social, desde las necesidades de nuestros clientes.
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <ScrollReveal delay={160}>
+            <div className="rounded-2xl bg-card border border-border/60 p-8 h-full shadow-[0_1px_3px_0_rgba(0,0,0,0.04)]">
+              <div className="w-12 h-12 rounded-2xl bg-primary text-primary-foreground flex items-center justify-center mb-5 shadow-lg shadow-primary/15">
+                <Eye className="w-6 h-6" />
+              </div>
+              <h3 className="text-xl font-semibold text-foreground mb-3">Visión</h3>
+              <p className="text-muted-foreground leading-relaxed" style={{ textWrap: "pretty" }}>
+                En 2033 seremos una empresa líder en la redefinición de espacios que inspiren a la sociedad colombiana y a otras en el mundo.
+              </p>
+            </div>
+          </ScrollReveal>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── Impacto social ─── */
+const impactPoints = [
+  "Oportunidades reales de vida para las poblaciones más vulnerables",
+  "Inclusión y respeto por la biodiversidad en todo lo que hacemos",
+  "Cobertura de seguridad social integral para el trabajador y su grupo familiar",
+  "Buenas prácticas que impactan positivamente a todos los actores involucrados",
+];
+
+function SocialImpact() {
+  return (
+    <section id="impacto" className="py-28 bg-card">
+      <div className="max-w-6xl mx-auto px-5">
+        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+          {/* Image */}
+          <ScrollReveal>
+            <div className="w-full lg:w-[480px] flex-shrink-0">
+              <div className="rounded-2xl overflow-hidden shadow-xl border border-border/40">
+                <img
+                  src={socialImg}
+                  alt="Equipo de trabajo diverso y sonriente con uniformes de la empresa"
+                  width={1280}
+                  height={960}
+                  loading="lazy"
+                  className="w-full h-auto object-cover"
+                />
+              </div>
+            </div>
+          </ScrollReveal>
+
+          {/* Content */}
+          <div className="flex-1">
+            <ScrollReveal>
+              <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-3">Responsabilidad social</p>
+              <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground mb-5" style={{ lineHeight: "1.15" }}>
+                Una empresa socialmente responsable
+              </h2>
+              <p className="text-muted-foreground leading-relaxed mb-8" style={{ textWrap: "pretty" }}>
+                Desde nuestra actividad generamos oportunidades reales de vida a las poblaciones más vulnerables, con un concepto claro de inclusión y biodiversidad.
+              </p>
+            </ScrollReveal>
+
+            <div className="space-y-4">
+              {impactPoints.map((point, i) => (
+                <ScrollReveal key={point} delay={i * 80}>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                    <p className="text-sm text-foreground leading-relaxed">{point}</p>
+                  </div>
+                </ScrollReveal>
+              ))}
+            </div>
+
+            <ScrollReveal delay={320}>
+              <div className="mt-8 flex items-center gap-3 rounded-xl bg-primary/10 border border-primary/20 p-4">
+                <HeartHandshake className="w-6 h-6 text-primary flex-shrink-0" />
+                <p className="text-sm text-foreground font-medium">
+                  Cada espacio que limpiamos dignifica el trabajo de quienes lo hacen posible.
+                </p>
+              </div>
+            </ScrollReveal>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── CTA final ─── */
+function FinalCTA() {
+  return (
+    <section id="contacto" className="relative overflow-hidden py-28" style={{ background: "#0a2428" }}>
+      <img
+        src={heroBg}
+        alt=""
+        width={1920}
+        height={1088}
+        loading="lazy"
+        className="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none select-none"
+        aria-hidden="true"
+      />
+      <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to top, #0a2428, transparent, #0a2428)" }} />
+
+      <div className="relative z-10 max-w-2xl mx-auto px-5 text-center">
+        <ScrollReveal>
+          <Users className="w-10 h-10 text-primary mx-auto mb-6" />
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white" style={{ lineHeight: "1.15" }}>
+            Transformemos tus espacios juntos
+          </h2>
+          <p className="mt-4 text-white/80 max-w-md mx-auto" style={{ textWrap: "pretty" }}>
+            Cuéntanos las necesidades de tu organización y diseñemos un servicio de aseo integral que inspire a tu equipo.
+          </p>
+          <a
+            href="mailto:contacto@tuempresa.co"
+            className="mt-8 inline-flex items-center gap-2 rounded-xl bg-primary text-primary-foreground px-8 py-4 text-sm font-semibold hover:bg-primary/90 transition-all duration-200 active:scale-[0.97] shadow-lg shadow-primary/25"
+          >
+            Solicita una cotización
+            <ArrowRight className="w-4 h-4" />
+          </a>
+        </ScrollReveal>
+      </div>
+    </section>
+  );
+}
+
+/* ─── Footer ─── */
+function Footer() {
+  return (
+    <footer className="border-t border-border/40 py-12">
+      <div className="max-w-5xl mx-auto px-5">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div className="flex items-center gap-2">
+            <Sparkles className="w-6 h-6 text-foreground" strokeWidth={2} />
+            <span className="font-semibold text-foreground text-sm">Tu Empresa</span>
+          </div>
+
+          <div className="flex items-center gap-6 text-sm text-muted-foreground">
+            <a href="#servicios" className="hover:text-foreground transition-colors">Servicios</a>
+            <a href="#nosotros" className="hover:text-foreground transition-colors">Nosotros</a>
+            <a href="#impacto" className="hover:text-foreground transition-colors">Impacto social</a>
+            <a href="#contacto" className="hover:text-foreground transition-colors">Contacto</a>
+          </div>
+
+          <p className="text-xs text-muted-foreground">© {new Date().getFullYear()} Tu Empresa · Colombia</p>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+/* ─── Scroll reveal wrapper ─── */
+function ScrollReveal({ children }: { children: React.ReactNode; delay?: number }) {
+  return <>{children}</>;
+}
