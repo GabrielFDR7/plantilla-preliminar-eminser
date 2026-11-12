@@ -11,9 +11,14 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AppRouteImport } from './routes/app'
+import { Route as BlogRouteImport } from './routes/blog'
+import { Route as EmpleadosRouteImport } from './routes/empleados'
 import { Route as InsightsRouteImport } from './routes/insights'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as QuienesSomosRouteImport } from './routes/quienes-somos'
+import { Route as ServiciosRouteImport } from './routes/servicios'
 import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as TrabajaConNosotrosRouteImport } from './routes/trabaja-con-nosotros'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -23,6 +28,16 @@ const IndexRoute = IndexRouteImport.update({
 const AppRoute = AppRouteImport.update({
   id: '/app',
   path: '/app',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogRoute = BlogRouteImport.update({
+  id: '/blog',
+  path: '/blog',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EmpleadosRoute = EmpleadosRouteImport.update({
+  id: '/empleados',
+  path: '/empleados',
   getParentRoute: () => rootRouteImport,
 } as any)
 const InsightsRoute = InsightsRouteImport.update({
@@ -35,48 +50,114 @@ const LoginRoute = LoginRouteImport.update({
   path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const QuienesSomosRoute = QuienesSomosRouteImport.update({
+  id: '/quienes-somos',
+  path: '/quienes-somos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServiciosRoute = ServiciosRouteImport.update({
+  id: '/servicios',
+  path: '/servicios',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SettingsRoute = SettingsRouteImport.update({
   id: '/settings',
   path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TrabajaConNosotrosRoute = TrabajaConNosotrosRouteImport.update({
+  id: '/trabaja-con-nosotros',
+  path: '/trabaja-con-nosotros',
   getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/app': typeof AppRoute
+  '/blog': typeof BlogRoute
+  '/empleados': typeof EmpleadosRoute
   '/insights': typeof InsightsRoute
   '/login': typeof LoginRoute
+  '/quienes-somos': typeof QuienesSomosRoute
+  '/servicios': typeof ServiciosRoute
   '/settings': typeof SettingsRoute
+  '/trabaja-con-nosotros': typeof TrabajaConNosotrosRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/app': typeof AppRoute
+  '/blog': typeof BlogRoute
+  '/empleados': typeof EmpleadosRoute
   '/insights': typeof InsightsRoute
   '/login': typeof LoginRoute
+  '/quienes-somos': typeof QuienesSomosRoute
+  '/servicios': typeof ServiciosRoute
   '/settings': typeof SettingsRoute
+  '/trabaja-con-nosotros': typeof TrabajaConNosotrosRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/app': typeof AppRoute
+  '/blog': typeof BlogRoute
+  '/empleados': typeof EmpleadosRoute
   '/insights': typeof InsightsRoute
   '/login': typeof LoginRoute
+  '/quienes-somos': typeof QuienesSomosRoute
+  '/servicios': typeof ServiciosRoute
   '/settings': typeof SettingsRoute
+  '/trabaja-con-nosotros': typeof TrabajaConNosotrosRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/app' | '/insights' | '/login' | '/settings'
+  fullPaths:
+    | '/'
+    | '/app'
+    | '/blog'
+    | '/empleados'
+    | '/insights'
+    | '/login'
+    | '/quienes-somos'
+    | '/servicios'
+    | '/settings'
+    | '/trabaja-con-nosotros'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/app' | '/insights' | '/login' | '/settings'
-  id: '__root__' | '/' | '/app' | '/insights' | '/login' | '/settings'
+  to:
+    | '/'
+    | '/app'
+    | '/blog'
+    | '/empleados'
+    | '/insights'
+    | '/login'
+    | '/quienes-somos'
+    | '/servicios'
+    | '/settings'
+    | '/trabaja-con-nosotros'
+  id:
+    | '__root__'
+    | '/'
+    | '/app'
+    | '/blog'
+    | '/empleados'
+    | '/insights'
+    | '/login'
+    | '/quienes-somos'
+    | '/servicios'
+    | '/settings'
+    | '/trabaja-con-nosotros'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AppRoute: typeof AppRoute
+  BlogRoute: typeof BlogRoute
+  EmpleadosRoute: typeof EmpleadosRoute
   InsightsRoute: typeof InsightsRoute
   LoginRoute: typeof LoginRoute
+  QuienesSomosRoute: typeof QuienesSomosRoute
+  ServiciosRoute: typeof ServiciosRoute
   SettingsRoute: typeof SettingsRoute
+  TrabajaConNosotrosRoute: typeof TrabajaConNosotrosRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -95,6 +176,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog': {
+      id: '/blog'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof BlogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/empleados': {
+      id: '/empleados'
+      path: '/empleados'
+      fullPath: '/empleados'
+      preLoaderRoute: typeof EmpleadosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/insights': {
       id: '/insights'
       path: '/insights'
@@ -109,11 +204,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/quienes-somos': {
+      id: '/quienes-somos'
+      path: '/quienes-somos'
+      fullPath: '/quienes-somos'
+      preLoaderRoute: typeof QuienesSomosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/servicios': {
+      id: '/servicios'
+      path: '/servicios'
+      fullPath: '/servicios'
+      preLoaderRoute: typeof ServiciosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/settings': {
       id: '/settings'
       path: '/settings'
       fullPath: '/settings'
       preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/trabaja-con-nosotros': {
+      id: '/trabaja-con-nosotros'
+      path: '/trabaja-con-nosotros'
+      fullPath: '/trabaja-con-nosotros'
+      preLoaderRoute: typeof TrabajaConNosotrosRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -122,9 +238,14 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AppRoute: AppRoute,
+  BlogRoute: BlogRoute,
+  EmpleadosRoute: EmpleadosRoute,
   InsightsRoute: InsightsRoute,
   LoginRoute: LoginRoute,
+  QuienesSomosRoute: QuienesSomosRoute,
+  ServiciosRoute: ServiciosRoute,
   SettingsRoute: SettingsRoute,
+  TrabajaConNosotrosRoute: TrabajaConNosotrosRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

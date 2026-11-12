@@ -1,4 +1,6 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { SiteNavigation } from "@/components/SiteNavigation";
+import { Reviews } from "@/components/Reviews";
+import { createFileRoute } from "@tanstack/react-router";
 import {
   Sparkles, HeartHandshake, Users, Target, Eye, ArrowRight, CheckCircle2,
 } from "lucide-react";
@@ -25,8 +27,10 @@ function LandingPage() {
     <div className="min-h-screen bg-background text-foreground">
       <Hero />
       <Services />
+      <Statistics />
       <About />
       <SocialImpact />
+      <Reviews />
       <FinalCTA />
       <Footer />
     </div>
@@ -36,7 +40,7 @@ function LandingPage() {
 /* ─── Hero ─── */
 function Hero() {
   return (
-    <section className="relative pb-24 pt-0 lg:pb-32 lg:pt-8" style={{ background: "#0a2428" }}>
+    <section className="relative flex min-h-dvh flex-col" style={{ background: "#0a2428" }}>
       <img
         src={heroBg}
         alt="Profesional de aseo limpiando un espacio corporativo moderno y luminoso"
@@ -48,40 +52,20 @@ function Hero() {
       <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to right, rgba(10,36,40,0.92), rgba(10,36,40,0.55), rgba(10,36,40,0.15))" }} />
       <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to bottom, rgba(10,36,40,0.3), transparent, rgba(10,36,40,0.4))" }} />
 
-      {/* Navbar */}
-      <nav className="relative z-20 max-w-5xl mx-auto px-5 h-16 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2.5">
-          <Sparkles className="w-7 h-7 text-white" strokeWidth={2} />
-          <span className="text-xl font-semibold text-white/90 tracking-tight">Tu Empresa</span>
-        </Link>
-
-        <div className="hidden sm:flex items-center gap-8 text-sm text-white">
-          <a href="#servicios" className="hover:text-white/70 transition-colors">Servicios</a>
-          <a href="#nosotros" className="hover:text-white/70 transition-colors">Nosotros</a>
-          <a href="#impacto" className="hover:text-white/70 transition-colors">Impacto social</a>
-        </div>
-
-        <a
-          href="#contacto"
-          className="inline-flex items-center gap-1.5 rounded-xl border border-white/30 bg-white/10 text-white px-5 py-2.5 text-sm font-medium hover:bg-white/20 backdrop-blur-sm transition-all duration-200 active:scale-[0.97]"
-        >
-          Contáctanos
-          <ArrowRight className="w-3.5 h-3.5" />
-        </a>
-      </nav>
+      <SiteNavigation overlay />
 
       {/* Hero content */}
-      <div className="relative z-10 max-w-5xl mx-auto px-5 pt-24 pb-12">
-        <div className="max-w-xl">
+      <div className="relative z-10 w-full flex flex-1 items-center px-5 py-12 sm:px-8 sm:py-20 lg:px-[15vw]">
+        <div className="w-full max-w-4xl">
           <ScrollReveal delay={80}>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white text-left" style={{ lineHeight: "1.08" }}>
-              Facility Management
+              Cuidamos tus espacios. Impulsamos tu bienestar.
             </h1>
           </ScrollReveal>
 
           <ScrollReveal delay={160}>
-            <p className="mt-6 text-lg text-white/90 text-left" style={{ textWrap: "pretty", lineHeight: "1.6" }}>
-              Un servicio integral con un propósito excepcional
+            <p className="mt-6 max-w-3xl text-lg text-white/90 text-left" style={{ textWrap: "pretty", lineHeight: "1.6" }}>
+              Integramos aseo, cafetería y mantenimiento para que tu organización funcione mejor, con un equipo comprometido y un servicio que genera oportunidades y transforma vidas.
             </p>
           </ScrollReveal>
 
@@ -112,7 +96,7 @@ function Hero() {
 function Services() {
   return (
     <section id="servicios" className="py-28 bg-card">
-      <div className="max-w-6xl mx-auto px-5">
+      <div className="max-w-7xl mx-auto px-5">
         <ScrollReveal>
           <div className="text-center mb-16 max-w-2xl mx-auto">
             <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-3">Servicios</p>
@@ -128,6 +112,38 @@ function Services() {
         <ScrollReveal>
           <ServicesBuilding />
         </ScrollReveal>
+      </div>
+    </section>
+  );
+}
+
+/* ─── Estadísticas: cifras provisionales ─── */
+function Statistics() {
+  const stats = [
+    { value: "350+", label: "Clientes", description: "Organizaciones que confían en nosotros" },
+    { value: "2.500+", label: "Empleados", description: "Personas que hacen la diferencia cada día" },
+    { value: "28", label: "Ciudades", description: "Ciudades donde operamos en Colombia" },
+  ];
+
+  return (
+    <section id="estadisticas" aria-labelledby="estadisticas-titulo" className="bg-[#0a2428] py-20 sm:py-28 text-white">
+      <div className="max-w-6xl mx-auto px-5">
+        <div className="max-w-2xl mx-auto text-center">
+          <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-3">Eminser en cifras</p>
+          <h2 id="estadisticas-titulo" className="text-3xl sm:text-4xl font-bold tracking-tight" style={{ lineHeight: "1.15" }}>
+            Un equipo que crece. Un alcance que conecta.
+          </h2>
+        </div>
+        <dl className="mt-14 grid gap-10 sm:grid-cols-3 sm:gap-0 sm:divide-x sm:divide-white/15">
+          {stats.map((stat) => (
+            <div key={stat.label} className="flex flex-col items-center px-5 text-center">
+              <dt className="order-2 mt-4 text-lg font-semibold">{stat.label}</dt>
+              <dd className="order-1 text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight tabular-nums text-primary">{stat.value}</dd>
+              <dd className="order-3 mt-2 max-w-56 text-sm leading-relaxed text-white/70">{stat.description}</dd>
+            </div>
+          ))}
+        </dl>
+        <p className="mt-12 text-center text-xs text-white/50">Cifras de ejemplo para esta propuesta de diseño.</p>
       </div>
     </section>
   );

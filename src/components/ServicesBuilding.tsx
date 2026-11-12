@@ -122,7 +122,7 @@ export function ServicesBuilding() {
   };
 
   return (
-    <div className="grid lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] gap-8 lg:gap-12 items-center">
+    <div className="grid lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] gap-8 lg:gap-12 items-center">
       {/* Building */}
       <div className="rounded-2xl border border-border/60 bg-background overflow-hidden shadow-[0_1px_3px_0_rgba(0,0,0,0.04)]">
         <BuildingIllustration active={active} explored={explored} onSelect={select} />
