@@ -1,3 +1,4 @@
+import { SiteFooter } from "@/components/SiteFooter";
 import type { ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { SiteNavigation } from "@/components/SiteNavigation";
@@ -40,7 +41,7 @@ export function ContentPage({ title, sections }: { title: string; sections: Cont
           </div>
         </div>
       </main>
-      <footer className="border-t border-border py-8"><div className="max-w-6xl mx-auto px-5 flex flex-wrap gap-4 items-center justify-between text-sm text-muted-foreground"><Link to="/" className="font-semibold text-foreground">Eminser</Link><p>© {new Date().getFullYear()} Eminser · Colombia</p></div></footer>
+      <SiteFooter />
     </div>
   );
 }

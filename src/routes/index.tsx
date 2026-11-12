@@ -1,8 +1,9 @@
+import { SiteFooter } from "@/components/SiteFooter";
 import { SiteNavigation } from "@/components/SiteNavigation";
 import { Reviews } from "@/components/Reviews";
 import { createFileRoute } from "@tanstack/react-router";
 import {
-  Sparkles, HeartHandshake, Users, Target, Eye, ArrowRight, CheckCircle2,
+  HeartHandshake, Users, Target, Eye, ArrowRight, CheckCircle2,
 } from "lucide-react";
 import { ServicesBuilding } from "@/components/ServicesBuilding";
 import heroBg from "@/assets/hero-cleaning.jpg";
@@ -32,7 +33,7 @@ function LandingPage() {
       <SocialImpact />
       <Reviews />
       <FinalCTA />
-      <Footer />
+      <SiteFooter />
     </div>
   );
 }
@@ -294,31 +295,6 @@ function FinalCTA() {
         </ScrollReveal>
       </div>
     </section>
-  );
-}
-
-/* ─── Footer ─── */
-function Footer() {
-  return (
-    <footer className="border-t border-border/40 py-12">
-      <div className="max-w-5xl mx-auto px-5">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-2">
-            <Sparkles className="w-6 h-6 text-foreground" strokeWidth={2} />
-            <span className="font-semibold text-foreground text-sm">Tu Empresa</span>
-          </div>
-
-          <div className="flex items-center gap-6 text-sm text-muted-foreground">
-            <a href="#servicios" className="hover:text-foreground transition-colors">Servicios</a>
-            <a href="#nosotros" className="hover:text-foreground transition-colors">Nosotros</a>
-            <a href="#impacto" className="hover:text-foreground transition-colors">Impacto social</a>
-            <a href="#contacto" className="hover:text-foreground transition-colors">Contacto</a>
-          </div>
-
-          <p className="text-xs text-muted-foreground">© {new Date().getFullYear()} Tu Empresa · Colombia</p>
-        </div>
-      </div>
-    </footer>
   );
 }
 
