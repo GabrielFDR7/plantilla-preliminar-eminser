@@ -27,7 +27,7 @@ export function SiteFooter() {
             </div>
           </div>
           <div>
-            <h2 className="font-semibold text-foreground">Canales de atención</h2>
+            <h2 id="contacto" className="font-semibold text-foreground">Canales de atención</h2>
             <p className="mt-5 text-sm text-muted-foreground">WhatsApp comercial</p>
             <a href="https://wa.me/573168322534" target="_blank" rel="noopener noreferrer" className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-foreground hover:text-primary"><MessageCircle aria-hidden="true" className="size-5" />+57 316 832 2534<span className="sr-only"> (abre WhatsApp en otra pestaña)</span></a>
           </div>

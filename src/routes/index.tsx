@@ -1,9 +1,10 @@
+import { BlogPreview } from "@/components/BlogPreview";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteNavigation } from "@/components/SiteNavigation";
 import { Reviews } from "@/components/Reviews";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import {
-  HeartHandshake, Users, Target, Eye, ArrowRight, CheckCircle2,
+  HeartHandshake, Users, Target, ShieldCheck, ArrowRight,
 } from "lucide-react";
 import { ServicesBuilding } from "@/components/ServicesBuilding";
 import heroBg from "@/assets/hero-cleaning.jpg";
@@ -29,8 +30,8 @@ function LandingPage() {
       <Hero />
       <Services />
       <Statistics />
-      <About />
-      <SocialImpact />
+      <ValueProposition />
+      <BlogPreview />
       <Reviews />
       <FinalCTA />
       <SiteFooter />
@@ -150,111 +151,64 @@ function Statistics() {
   );
 }
 
-/* ─── Nosotros: Misión y Visión ─── */
-function About() {
+/* ─── Propuesta de valor ─── */
+function ValueProposition() {
+  const pillars = [
+    {
+      icon: Target,
+      image: heroBg,
+      imageAlt: "Servicio de aseo en un espacio corporativo",
+      imagePosition: "center",
+      title: "Soluciones a tu medida",
+      description: "Integramos aseo, cafetería y mantenimiento según las necesidades de tu organización, para que cada espacio acompañe el ritmo de tu operación.",
+    },
+    {
+      icon: ShieldCheck,
+      image: heroBg,
+      imageAlt: "Profesional de aseo cuidando los detalles de las instalaciones",
+      imagePosition: "right",
+      title: "Confianza en cada detalle",
+      description: "Cuidamos tus instalaciones con un equipo preparado, atención cercana y seguimiento al servicio, para darte tranquilidad en el día a día.",
+    },
+    {
+      icon: HeartHandshake,
+      image: socialImg,
+      imageAlt: "Equipo de trabajo con uniformes de la empresa",
+      imagePosition: "center",
+      title: "Personas con propósito",
+      description: "Ponemos a las personas en el centro del servicio, promoviendo el trabajo digno y el bienestar de quienes cuidan y utilizan tus espacios.",
+    },
+  ];
+
   return (
     <section id="nosotros" className="py-28 border-y border-border/40">
-      <div className="max-w-5xl mx-auto px-5">
+      <div className="max-w-[1440px] mx-auto px-5 sm:px-8">
         <ScrollReveal>
           <div className="text-center mb-16">
-            <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-3">Nosotros</p>
+            <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-3">Propuesta de valor</p>
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground" style={{ lineHeight: "1.15" }}>
-              Quiénes somos y hacia dónde vamos
+              Tres pilares para cuidar lo que importa
             </h2>
           </div>
         </ScrollReveal>
 
-        <div className="grid md:grid-cols-2 gap-6">
-          <ScrollReveal delay={80}>
-            <div className="rounded-2xl bg-card border border-border/60 p-8 h-full shadow-[0_1px_3px_0_rgba(0,0,0,0.04)]">
-              <div className="w-12 h-12 rounded-2xl bg-primary text-primary-foreground flex items-center justify-center mb-5 shadow-lg shadow-primary/15">
-                <Target className="w-6 h-6" />
-              </div>
-              <h3 className="text-xl font-semibold text-foreground mb-3">Misión</h3>
-              <p className="text-muted-foreground leading-relaxed" style={{ textWrap: "pretty" }}>
-                Redefinir la experiencia de uso de espacios físicos al ofrecer servicios integrales de aseo que inspiren a la productividad, el bienestar y al compromiso social, desde las necesidades de nuestros clientes.
-              </p>
-            </div>
-          </ScrollReveal>
-
-          <ScrollReveal delay={160}>
-            <div className="rounded-2xl bg-card border border-border/60 p-8 h-full shadow-[0_1px_3px_0_rgba(0,0,0,0.04)]">
-              <div className="w-12 h-12 rounded-2xl bg-primary text-primary-foreground flex items-center justify-center mb-5 shadow-lg shadow-primary/15">
-                <Eye className="w-6 h-6" />
-              </div>
-              <h3 className="text-xl font-semibold text-foreground mb-3">Visión</h3>
-              <p className="text-muted-foreground leading-relaxed" style={{ textWrap: "pretty" }}>
-                En 2033 seremos una empresa líder en la redefinición de espacios que inspiren a la sociedad colombiana y a otras en el mundo.
-              </p>
-            </div>
-          </ScrollReveal>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ─── Impacto social ─── */
-const impactPoints = [
-  "Oportunidades reales de vida para las poblaciones más vulnerables",
-  "Inclusión y respeto por la biodiversidad en todo lo que hacemos",
-  "Cobertura de seguridad social integral para el trabajador y su grupo familiar",
-  "Buenas prácticas que impactan positivamente a todos los actores involucrados",
-];
-
-function SocialImpact() {
-  return (
-    <section id="impacto" className="py-28 bg-card">
-      <div className="max-w-6xl mx-auto px-5">
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
-          {/* Image */}
-          <ScrollReveal>
-            <div className="w-full lg:w-[480px] flex-shrink-0">
-              <div className="rounded-2xl overflow-hidden shadow-xl border border-border/40">
-                <img
-                  src={socialImg}
-                  alt="Equipo de trabajo diverso y sonriente con uniformes de la empresa"
-                  width={1280}
-                  height={960}
-                  loading="lazy"
-                  className="w-full h-auto object-cover"
-                />
-              </div>
-            </div>
-          </ScrollReveal>
-
-          {/* Content */}
-          <div className="flex-1">
-            <ScrollReveal>
-              <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-3">Responsabilidad social</p>
-              <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground mb-5" style={{ lineHeight: "1.15" }}>
-                Una empresa socialmente responsable
-              </h2>
-              <p className="text-muted-foreground leading-relaxed mb-8" style={{ textWrap: "pretty" }}>
-                Desde nuestra actividad generamos oportunidades reales de vida a las poblaciones más vulnerables, con un concepto claro de inclusión y biodiversidad.
-              </p>
-            </ScrollReveal>
-
-            <div className="space-y-4">
-              {impactPoints.map((point, i) => (
-                <ScrollReveal key={point} delay={i * 80}>
-                  <div className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                    <p className="text-sm text-foreground leading-relaxed">{point}</p>
-                  </div>
-                </ScrollReveal>
-              ))}
-            </div>
-
-            <ScrollReveal delay={320}>
-              <div className="mt-8 flex items-center gap-3 rounded-xl bg-primary/10 border border-primary/20 p-4">
-                <HeartHandshake className="w-6 h-6 text-primary flex-shrink-0" />
-                <p className="text-sm text-foreground font-medium">
-                  Cada espacio que limpiamos dignifica el trabajo de quienes lo hacen posible.
+        <div className="grid auto-rows-fr lg:grid-cols-3 gap-8">
+          {pillars.map((pillar, index) => (
+            <ScrollReveal key={pillar.title} delay={(index + 1) * 80}>
+              <div className="overflow-hidden rounded-2xl bg-card border border-border/60 h-full shadow-[0_1px_3px_0_rgba(0,0,0,0.04)]">
+                <img src={pillar.image} alt={pillar.imageAlt} width={1920} height={1088} loading="lazy" className="h-60 sm:h-72 w-full object-cover" style={{ objectPosition: pillar.imagePosition }} />
+                <div className="p-8 xl:p-10">
+                <div className="w-12 h-12 rounded-2xl bg-primary text-primary-foreground flex items-center justify-center mb-5 shadow-lg shadow-primary/15">
+                  <pillar.icon className="w-6 h-6" />
+                </div>
+                <h3 className="text-2xl font-semibold text-foreground mb-4">{pillar.title}</h3>
+                <p className="text-muted-foreground leading-relaxed" style={{ textWrap: "pretty" }}>
+                  {pillar.description}
                 </p>
+                </div>
               </div>
             </ScrollReveal>
-          </div>
+          ))}
         </div>
       </div>
     </section>
@@ -264,7 +218,7 @@ function SocialImpact() {
 /* ─── CTA final ─── */
 function FinalCTA() {
   return (
-    <section id="contacto" className="relative overflow-hidden py-28" style={{ background: "#0a2428" }}>
+    <section id="trabaja-con-nosotros" className="relative overflow-hidden py-28" style={{ background: "#0a2428" }}>
       <img
         src={heroBg}
         alt=""
@@ -280,18 +234,18 @@ function FinalCTA() {
         <ScrollReveal>
           <Users className="w-10 h-10 text-primary mx-auto mb-6" />
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white" style={{ lineHeight: "1.15" }}>
-            Transformemos tus espacios juntos
+            Tu talento tiene un lugar en Eminser
           </h2>
           <p className="mt-4 text-white/80 max-w-md mx-auto" style={{ textWrap: "pretty" }}>
-            Cuéntanos las necesidades de tu organización y diseñemos un servicio de aseo integral que inspire a tu equipo.
+            Súmate a un equipo que cuida los espacios y valora a las personas. Conoce nuestras vacantes y encuentra una oportunidad para aportar tu talento y crecer con nosotros.
           </p>
-          <a
-            href="mailto:contacto@tuempresa.co"
+          <Link
+            to="/trabaja-con-nosotros"
             className="mt-8 inline-flex items-center gap-2 rounded-xl bg-primary text-primary-foreground px-8 py-4 text-sm font-semibold hover:bg-primary/90 transition-all duration-200 active:scale-[0.97] shadow-lg shadow-primary/25"
           >
-            Solicita una cotización
+            Trabaja con nosotros
             <ArrowRight className="w-4 h-4" />
-          </a>
+          </Link>
         </ScrollReveal>
       </div>
     </section>
